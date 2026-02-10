@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MaxRL vs REINFORCE -- Live Training Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header / citation -->
+  <header id="header">
+    <h1>MaxRL vs REINFORCE</h1>
+    <p class="citation">
+      Based on Tajwar et al. 2025 &mdash;
+      <em>"Maximum Likelihood Reinforcement Learning"</em>
+    </p>
+  </header>
+
+  <!-- Control bar -->
+  <div id="controls">
+    <!-- Grid presets -->
+    <div class="ctrl-group">
+      <button id="btnDefaultGrid" class="ctrl-btn active" title="Load default 11x11 three-paths maze">Default Grid</button>
+      <button id="btnRandomGrid" class="ctrl-btn" title="Generate a random maze">Random Grid</button>
+      <button id="btnEditGrid" class="ctrl-btn" title="Click cells to toggle walls">Edit Grid</button>
+    </div>
+
+    <span class="ctrl-sep"></span>
+
+    <!-- Start mode toggle -->
+    <div class="ctrl-group">
+      <button id="btnStartMode" class="ctrl-btn toggle" title="Toggle single / multi start mode">Single Start</button>
+      <label class="ctrl-label" for="hardPctSlider" id="hardPctLabel">Hard: 50%</label>
+      <input type="range" id="hardPctSlider" min="0" max="100" value="50" class="ctrl-slider" title="Percentage of hard starts in each batch">
+    </div>
+
+    <span class="ctrl-sep"></span>
+
+    <!-- Playback -->
+    <div class="ctrl-group">
+      <button id="btnPlayPause" class="ctrl-btn accent-orange" title="Play / Pause training">Play</button>
+      <button id="btnReset" class="ctrl-btn" title="Reset policies and restart training">Reset</button>
+    </div>
+
+    <span class="ctrl-sep"></span>
+
+    <!-- Speed -->
+    <div class="ctrl-group">
+      <label class="ctrl-label" for="speedSlider">Speed</label>
+      <input type="range" id="speedSlider" min="1" max="100" value="50" class="ctrl-slider">
+    </div>
+  </div>
+
+  <!-- Main canvas -->
+  <div id="canvas-wrap">
+    <canvas id="mainCanvas" width="1400" height="820"></canvas>
+  </div>
+
+  <!-- Formula bar -->
+  <div id="formula-bar">
+    <span class="formula rl">RL: &nbsp; max &nbsp; E<sub>maze</sub>[ p(success|maze) ]</span>
+    <span class="formula maxrl">MaxRL: &nbsp; max &nbsp; E<sub>maze</sub>[ log p(success|maze) ]</span>
+  </div>
+
+  <!-- Vibecoded badge -->
+  <div id="claude-badge">
+    <svg width="28" height="28" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Claude Code mascot pixel art -->
+      <!-- Antennae -->
+      <rect x="3" y="0" width="2" height="2" fill="#D97757"/>
+      <rect x="9" y="0" width="2" height="2" fill="#D97757"/>
+      <!-- Head/body -->
+      <rect x="1" y="2" width="12" height="8" rx="1" fill="#D97757"/>
+      <!-- Eyes -->
+      <rect x="4" y="5" width="2" height="2" rx="0.5" fill="#2a1a12"/>
+      <rect x="8" y="5" width="2" height="2" rx="0.5" fill="#2a1a12"/>
+      <!-- Legs -->
+      <rect x="3" y="10" width="2" height="2" fill="#D97757"/>
+      <rect x="9" y="10" width="2" height="2" fill="#D97757"/>
+    </svg>
+    <span>vibecoded by claude</span>
+  </div>
+
+  <!-- JS modules -->
+  <script type="module" src="engine.js"></script>
+  <script type="module" src="renderer.js"></script>
+  <script type="module" src="editor.js"></script>
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>

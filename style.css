@@ -1,0 +1,228 @@
+/* ── Reset & base ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg:           #121218;
+  --panel:        #28282e;
+  --panel-border: #3c3c46;
+  --surface:      #1c1c24;
+  --text:         #dcdce6;
+  --text-dim:     #8c8c9e;
+  --accent-rl:    #64a0ff;
+  --accent-maxrl: #ff8c3c;
+  --accent-green: #00c850;
+  --divider:      #3c3c4b;
+  --ctrl-bg:      #22222a;
+  --ctrl-hover:   #32323c;
+  --ctrl-active:  #3a3a48;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Header ───────────────────────────────────────────────────────── */
+#header {
+  text-align: center;
+  padding: 18px 20px 6px;
+}
+
+#header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+#header .citation {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+#header .citation em {
+  color: var(--text-dim);
+}
+
+/* ── Control bar ──────────────────────────────────────────────────── */
+#controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  margin: 6px 0 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ctrl-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ctrl-sep {
+  width: 1px;
+  height: 24px;
+  background: var(--divider);
+  margin: 0 6px;
+}
+
+/* Buttons */
+.ctrl-btn {
+  background: var(--ctrl-bg);
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.ctrl-btn:hover {
+  background: var(--ctrl-hover);
+  border-color: var(--text-dim);
+}
+
+.ctrl-btn:active {
+  background: var(--ctrl-active);
+}
+
+.ctrl-btn.active {
+  background: var(--accent-rl);
+  color: #fff;
+  border-color: var(--accent-rl);
+}
+
+.ctrl-btn.accent-orange {
+  background: var(--accent-maxrl);
+  color: #fff;
+  border-color: var(--accent-maxrl);
+}
+
+.ctrl-btn.accent-orange:hover {
+  background: #e07828;
+}
+
+.ctrl-btn.toggle.on {
+  background: var(--accent-rl);
+  color: #fff;
+  border-color: var(--accent-rl);
+}
+
+/* Slider */
+.ctrl-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-right: 4px;
+  user-select: none;
+}
+
+.ctrl-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--ctrl-bg);
+  outline: none;
+  cursor: pointer;
+}
+
+.ctrl-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-maxrl);
+  border: 2px solid var(--panel);
+  cursor: pointer;
+}
+
+.ctrl-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-maxrl);
+  border: 2px solid var(--panel);
+  cursor: pointer;
+}
+
+/* ── Canvas ───────────────────────────────────────────────────────── */
+#canvas-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+#mainCanvas {
+  background: var(--bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Formula bar ──────────────────────────────────────────────────── */
+#formula-bar {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  padding: 10px 20px 18px;
+  flex-wrap: wrap;
+}
+
+.formula {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.formula.rl {
+  color: var(--accent-rl);
+}
+
+.formula.maxrl {
+  color: var(--accent-maxrl);
+}
+
+/* ── Claude badge ────────────────────────────────────────────────── */
+#claude-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+
+#claude-badge:hover {
+  opacity: 0.9;
+}
+
+#claude-badge span {
+  font-size: 11px;
+  color: #D97757;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
