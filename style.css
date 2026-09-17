@@ -55,6 +55,22 @@ body {
   color: var(--text-dim);
 }
 
+#header .site-backlink {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+#header .site-backlink a {
+  color: var(--text-dim);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+#header .site-backlink a:hover {
+  color: var(--text);
+  opacity: 1;
+}
+
 /* ── Control bar ──────────────────────────────────────────────────── */
 #controls {
   display: flex;
